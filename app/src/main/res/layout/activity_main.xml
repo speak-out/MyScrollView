@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <administrator.example.com.myscrollview.VerticalViewPager
+        android:id="@+id/vertyPager1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <!--<TextView-->
+            <!--android:background="@drawable/a1"-->
+            <!--android:id="@+id/textView1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:text="TextView1111" />-->
+
+        <!--<TextView-->
+            <!--android:background="@drawable/a2"-->
+            <!--android:id="@+id/textView2"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:text="TextView2222" />-->
+
+        <!--<TextView-->
+            <!--android:background="@drawable/a3"-->
+            <!--android:id="@+id/textView3"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:text="TextView2222" />-->
+
+        <!--<TextView-->
+            <!--android:background="@drawable/a4"-->
+            <!--android:id="@+id/textView4"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:text="TextView2222" />-->
+    </administrator.example.com.myscrollview.VerticalViewPager>
+
+</LinearLayout>
