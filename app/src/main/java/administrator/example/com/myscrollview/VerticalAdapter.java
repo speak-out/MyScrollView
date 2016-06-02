@@ -6,44 +6,65 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by yuer on 2016/6/1.
  */
-public class VerticalAdapter extends  VerticalPagerAdapter {
-    int num[] = new int[]{R.drawable.a1};
+public class VerticalAdapter extends  VerticalPagerAdapter{
+    ArrayList<View> arrayList = new ArrayList<>();
     Activity activity;
-    VerticalAdapter(Activity activity){
+    private int mChildCount;
+    VerticalAdapter(Activity activity,ArrayList<View> arrayList){
     this.activity = activity;
+        this.arrayList = arrayList;
     }
 
     @Override
     public int getCount() {
-        return num.length;
+        if(arrayList == null){
+                return  0;
+        }else{
+            return arrayList.size();
+        }
     }
     @Override
     public boolean isViewFromObject(View view, Object object) {
         return view == object;
     }
-
+   public void addViewToAdapter(ArrayList<View> viewList){
+            arrayList = viewList;
+   }
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
-       View view =  activity.getLayoutInflater().inflate(R.layout.item_test_hair_viewpage,null);
-        ImageView iv = (ImageView) view.findViewById(R.id.iv_page);
-//        iv.setBackgroundResource(num[position]);
-        iv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(activity,"点击"+position,Toast.LENGTH_LONG).show();
-
-
-            }
-        });
-        container.addView(view);
-        return view;
+        ViewGroup parent = (ViewGroup)arrayList.get(position).getParent();
+        if (parent != null) {
+            parent.removeAllViews();
+        }
+        container.addView(arrayList.get(position));
+        return arrayList.get(position);
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((View)object);
+        View view = arrayList.get(position);
+        container.removeView(view);
+    }
+
+    @Override
+
+    public void notifyDataSetChanged() {
+        mChildCount = getCount();
+        super.notifyDataSetChanged();
+    }
+
+    @Override
+    public int getItemPosition(Object object) {  //重写这方法，强制adapter从新刷新数据,默认的不会强制去刷新数据的，默认值： POSITION_UNCHANGED
+        if ( mChildCount > 0) {
+            mChildCount--;
+            return POSITION_NONE;
+        }
+        return super.getItemPosition(object);
     }
 }

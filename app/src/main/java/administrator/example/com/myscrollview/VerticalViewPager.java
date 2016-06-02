@@ -1108,6 +1108,7 @@ public class VerticalViewPager extends ViewGroup {
             addViewInLayout(child, index, params);
             child.measure(mChildWidthMeasureSpec, mChildHeightMeasureSpec);
         } else {
+//            super.removeAllViews();      //不能有父类
             super.addView(child, index, params);
         } /* end of if */
 
